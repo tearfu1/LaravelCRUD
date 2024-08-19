@@ -32,9 +32,26 @@ class PostController extends Controller
             ],
 
         ];
-         foreach ($postsArr as $post) {
-             Post::create($post);
-         }
-         dd("created");
+        foreach ($postsArr as $post) {
+            Post::create($post);
+        }
+        dd("created");
+    }
+
+    public function update()
+    {
+        $post = Post::find(4);
+        $post->update([
+            "title" => "updated title",
+            "content" => "updated content",
+        ]);
+        dd("updated");
+    }
+
+    public function delete()
+    {
+        $post = Post::withTrashed()->find(1);
+        $post->restore();
+        dd("deleted");
     }
 }
