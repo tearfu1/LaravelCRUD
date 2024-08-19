@@ -54,4 +54,32 @@ class PostController extends Controller
         $post->restore();
         dd("deleted");
     }
+
+    public function firstOrCreate()
+    {
+        $postArr = [
+            "title" => "FOCtitle",
+            "content" => "FOCcontent",
+            "image" => "FOCimg",
+            "likes" => 1111,
+        ];
+        $post = Post::firstOrCreate([
+            "title" => "FOCtitle",
+        ], $postArr);
+        dd("FOCdone");
+    }
+
+    public function updateOrCreate()
+    {
+        $postArr = [
+            "title" => "UOCtitle",
+            "content" => "UOCcontent",
+            "image" => "UOCimg",
+            "likes" => 2222,
+        ];
+        $post = Post::updateOrCreate([
+            "title" => "FOCtitle",
+        ], $postArr);
+        dd("UOCdone");
+    }
 }
