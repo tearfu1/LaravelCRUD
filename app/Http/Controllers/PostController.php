@@ -9,7 +9,32 @@ class PostController extends Controller
 {
     public function index()
     {
-        $post = Post::find(1);
-        dd($post);
+        $posts = Post::where("likes", 10)->first();
+        dd($posts);
+    }
+
+    public function create()
+    {
+        $postsArr = [
+            [
+                "title" => "postXXX",
+                "content" => "contentXXX",
+                "image" => "imgXXX",
+                "likes" => 3232,
+                "is_published" => 1,
+            ],
+            [
+                "title" => "postZZZ",
+                "content" => "contentZZZ",
+                "image" => "imgZZZ",
+                "likes" => 6767,
+                "is_published" => 1,
+            ],
+
+        ];
+         foreach ($postsArr as $post) {
+             Post::create($post);
+         }
+         dd("created");
     }
 }
