@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PostController;
+
+Route::get('/posts', [PostController::class, 'index']);
+
+use App\Http\Controllers\PersonController;
+
+Route::get('/person', [PersonController::class, 'index']);
+
 use App\Http\Controllers\AgeController;
 
 Route::get('/age', [AgeController::class, 'index']);
