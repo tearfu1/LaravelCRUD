@@ -4,48 +4,26 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
 
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::get('/posts/update', [PostController::class, 'update']);
 Route::get('/posts/delete', [PostController::class, 'delete']);
 Route::get('/posts/first_or_create', [PostController::class, 'firstOrCreate']);
 Route::get('/posts/update_or_create', [PostController::class, 'updateOrCreate']);
 
-use App\Http\Controllers\PersonController;
+use App\Http\Controllers\AboutController;
 
-Route::get('/person', [PersonController::class, 'index']);
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
-use App\Http\Controllers\AgeController;
+use App\Http\Controllers\ContactController;
 
-Route::get('/age', [AgeController::class, 'index']);
+Route::get('/contacts', [ContactController::class, 'index'])->name('contact.index');
 
-use App\Http\Controllers\AloneController;
+use App\Http\Controllers\MainController;
 
-Route::get('/alone', [AloneController::class, 'index']);
+Route::get('/main', [MainController::class, 'index'])->name('main.index');
 
-use App\Http\Controllers\CarController;
 
-Route::get('/car', [CarController::class, 'index']);
-
-use App\Http\Controllers\CityController;
-
-Route::get('/city', [CityController::class, 'index']);
-
-use App\Http\Controllers\MyPlaceContoller;
-
-Route::get('/my_page', [MyPlaceContoller::class, 'index']);
-
-use App\Http\Controllers\NameController;
-
-Route::get('/name', [NameController::class, 'index']);
-
-use App\Http\Controllers\SexController;
-
-Route::get('/sex', [SexController::class, 'index']);
-
-use App\Http\Controllers\WorkController;
-
-Route::get('/work', [WorkController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');
