@@ -16,7 +16,13 @@
                     <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('person.index') }}">People</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('post.create') }}">Create Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('person.create') }}">Create Person</a>
                 </li>
             </ul>
         </nav>

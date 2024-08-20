@@ -19,8 +19,10 @@ return new class extends Migration {
             $table->string('phone');
             $table->string('education')->nullable();
             $table->string('job')->nullable();
-            $table->boolean('is_married')->default(0);
+            $table->boolean('is_married')->default(0)->nullable();
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 

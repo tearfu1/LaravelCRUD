@@ -14,11 +14,6 @@ class PostController extends Controller
         return view('posts', compact('posts'));
     }
 
-    public function show(Post $post)
-    {
-        return view('post.show', compact('post'));
-    }
-
     public function create()
     {
         return view('post.create');
@@ -33,6 +28,11 @@ class PostController extends Controller
         ]);
         Post::create($post);
         return redirect()->route('post.index');
+    }
+
+    public function show(Post $post)
+    {
+        return view('post.show', compact('post'));
     }
 
     public function edit(Post $post)

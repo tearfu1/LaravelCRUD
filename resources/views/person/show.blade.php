@@ -1,14 +1,19 @@
 @extends('layouts.main')
 @section('content')
-    <div>{{ $post->id }}. {{ $post->title }}</div>
-    <div>{{ $post->content }}</div>
+    <div>{{ $person->id }}. {{ $person->name }} {{ $person->surname }}</div>
+    <div>Age: {{ $person->age }}</div>
+    <div>Email: {{ $person->email }}</div>
+    <div>Phone: {{ $person->phone }}</div>
+    <div>Education: {{ $person->education }}</div>
+    <div>Job: {{ $person->job }}</div>
+    <div>Married: {{ $person->Married }}</div>
     <div>
-        <form action="{{ route("post.edit", $post->id) }}">
+        <form action="{{ route("person.edit", $person->id) }}">
             <button type="submit" class="btn btn-primary">Edit</button>
         </form>
     </div>
     <div>
-        <form action="{{ route("post.destroy", $post->id) }}" method="post">
+        <form action="{{ route("person.destroy", $person->id) }}" method="post">
             @csrf
             @method("delete")
             <button type="submit" class="btn btn-danger">Delete</button>
