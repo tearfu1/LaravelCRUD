@@ -6,16 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\StoreRequest;
 use App\Models\Post;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
     public function __invoke(StoreRequest $request, Post $post)
     {
         $editedData = $request->validated();
-        $tags = $editedData['tags'];
-        unset($editedData['tags']);
-
-        $post->update($editedData);
-        $post->tags()->sync($tags);
+        $this->service->update($post, $editedData);
         return redirect()->route('post.show', $post->id);
     }
 }
