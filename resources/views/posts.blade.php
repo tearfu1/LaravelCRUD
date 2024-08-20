@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
     @foreach($posts as $post)
-        <div>{{ $post->title }}</div>
+        <div><a href="{{route('post.show',$post->id)}}">{{ $post->id }}. {{ $post->title }}</a></div>
     @endforeach
 @endsection

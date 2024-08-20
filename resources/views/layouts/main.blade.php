@@ -13,16 +13,10 @@
         <nav>
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('main.index') }}">Main</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact.index') }}">Contacts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about.index') }}">About</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('post.create') }}">Create Post</a>
                 </li>
             </ul>
         </nav>

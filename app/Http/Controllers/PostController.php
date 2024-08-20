@@ -14,39 +14,41 @@ class PostController extends Controller
         return view('posts', compact('posts'));
     }
 
-    public function create()
+    public function show(Post $post)
     {
-        $postsArr = [
-            [
-                "title" => "postXXX",
-                "content" => "contentXXX",
-                "image" => "imgXXX",
-                "likes" => 3232,
-                "is_published" => 1,
-            ],
-            [
-                "title" => "postZZZ",
-                "content" => "contentZZZ",
-                "image" => "imgZZZ",
-                "likes" => 6767,
-                "is_published" => 1,
-            ],
-
-        ];
-        foreach ($postsArr as $post) {
-            Post::create($post);
-        }
-        dd("created");
+        return view('post.show', compact('post'));
     }
 
-    public function update()
+    public function create()
     {
-        $post = Post::find(4);
-        $post->update([
-            "title" => "updated title",
-            "content" => "updated content",
+        return view('post.create');
+    }
+
+    public function store()
+    {
+        $post = request()->validate([
+            "title" => "string",
+            "content" => "string",
+            "image" => "string",
         ]);
-        dd("updated");
+        Post::create($post);
+        return redirect()->route('post.index');
+    }
+
+    public function edit(Post $post)
+    {
+        return view('post.edit', compact('post'));
+    }
+
+    public function update(Post $post)
+    {
+        $editedData = request()->validate([
+            "title" => "string",
+            "content" => "string",
+            "image" => "string",
+        ]);
+        $post->update($editedData);
+        return redirect()->route('post.show', $post->id);
     }
 
     public function delete()
@@ -54,6 +56,12 @@ class PostController extends Controller
         $post = Post::withTrashed()->find(1);
         $post->restore();
         dd("deleted");
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('post.index');
     }
 
     public function firstOrCreate()
