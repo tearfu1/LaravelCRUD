@@ -3,19 +3,14 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Post;
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function __invoke(UpdateRequest $request)
     {
-        $data = request()->validate([
-            "title" => "required|string",
-            "content" => "string",
-            "image" => "string",
-            "category_id" => "integer",
-            "tags" => 'required|',
-        ]);
+        $data = $request->validated();
         $tags = $data['tags'];
         unset($data['tags']);
         $post = Post::create($data);

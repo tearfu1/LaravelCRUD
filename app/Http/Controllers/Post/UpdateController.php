@@ -3,19 +3,14 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StoreRequest;
 use App\Models\Post;
 
 class UpdateController extends Controller
 {
-    public function __invoke(Post $post)
+    public function __invoke(StoreRequest $request, Post $post)
     {
-        $editedData = request()->validate([
-            "title" => "string",
-            "content" => "string",
-            "image" => "string",
-            "category_id" => "integer",
-            "tags" => '',
-        ]);
+        $editedData = $request->validated();
         $tags = $editedData['tags'];
         unset($editedData['tags']);
 
