@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         Category::factory(3)->create();
         Tag::factory(5)->create();
-        Post::factory(10)->create();
+        Post::factory(30)->create();
 
         $tags = Tag::all();
         $posts = Post::all();
