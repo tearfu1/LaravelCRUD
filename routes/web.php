@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonController;
 
 Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     Route::get('/posts', IndexController::class)->name('post.index');
@@ -14,7 +15,18 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
 });
 
 
-use App\Http\Controllers\PersonController;
+Route::group(['namespace' => "App\Http\Controllers\Admin", 'prefix' => 'admin'], function () {
+    Route::get('/', MainController::class)->name('admin.main');
+    Route::group(['namespace' => "Post"], function () {
+        Route::get('/posts', IndexController::class)->name('admin.post.index');
+        Route::get('/post/create', CreateController::class)->name('admin.post.create');
+        Route::post('/posts', StoreController::class)->name('admin.post.store');
+        Route::get('/posts/{post}', ShowController::class)->name('admin.post.show');
+        Route::get('/posts/{post}/edit', EditController::class)->name('admin.post.edit');
+        Route::patch('/posts/{post}', UpdateController::class)->name('admin.post.update');
+        Route::delete('/posts/{post}', DestroyController::class)->name('admin.post.destroy');
+    });
+});
 
 Route::get('/people', [PersonController::class, 'index'])->name('person.index');
 Route::get('/people/create', [PersonController::class, 'create'])->name('person.create');
