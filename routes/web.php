@@ -15,7 +15,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
 });
 
 
-Route::group(['namespace' => "App\Http\Controllers\Admin", 'prefix' => 'admin'], function () {
+Route::group(['namespace' => "App\Http\Controllers\Admin", 'prefix' => 'admin', 'middleware'=>'admin'], function () {
     Route::get('/', MainController::class)->name('admin.main');
     Route::group(['namespace' => "Post"], function () {
         Route::get('/posts', IndexController::class)->name('admin.post.index');
